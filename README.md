@@ -40,5 +40,6 @@ Look at the unit test parameters below codes/ or the parameters used in run_trai
 
 [4] Le, Q. V., Jaitly, N., & Hinton, G. E. (2015). A Simple Way to Initialize Recurrent Networks of Rectified Linear Units. arXiv preprint arXiv:1504.00941.
 
-** Author of the modification**
+**Author of the modification**
+
 Jordi Pons (idrojsnop@gmail.com)
