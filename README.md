@@ -4,16 +4,16 @@ A Matlab implementation of DRNN for monaural audio source separation based on th
 
 With this framework one can also set several kinds of inicializations for DRNN, such as "Xavier" [2], "He" [3] and "IRNN" [4].
 
-Getting Started
-====================
+**Getting Started**
+
 1. training: run_train.m (run_train.sh is only used to run the Matlab)
  
 2. testing: run_test.m
 
 To try the codes on your data, put your data into a folder accordingly and look at the unit test parameters below codes/ or in run_train.m. 
 
-Dependencies
-====================
+**Dependencies**
+
 1. The package is modified based on deeplearningsourceseparation (Reference: https://sites.google.com/site/deeplearningsourceseparation/) that at its time is based on rnn-speech-denoising (Reference: https://github.com/amaas/rnn-speech-denoising).
 
 2. The software depends on Mark Schmidt's minFunc package for convex optimization (Reference: http://www.di.ens.fr/~mschmidt/Software/minFunc.html).
@@ -28,8 +28,8 @@ Dependencies
 
 7. We use MIR-1K for singing voice separation task (Reference: https://sites.google.com/site/unvoicedsoundseparation/mir-1k).
 
-References
-====================
+**References**
+
 [1] Po-Sen Huang, Minje Kim, Mark Hasegawa-Johnson, Paris Smaragdis (2015). "Joint Optimization of Masks and Deep Recurrent Neural Networks for Monaural Source Separation" to appear in IEEE/ACM Transactions on Audio, Speech, and Language Processing.
 
 [2] Glorot, X., & Bengio, Y. (2010). Understanding the difficulty of training deep feedforward neural networks. In International conference on artificial intelligence and statistics (pp. 249-256).
