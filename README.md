@@ -12,6 +12,8 @@ With this framework one can also set several kinds of inicializations for DRNN, 
 
 To try the codes on your data: put your data into a waves/ folder. The waves/ folder should be into the same root folder as DRNN4ASS/.
 
+Inside DRNN4ASS/ the directories DRNN4ASS/models and DRNN4ASS/resultWaves should also be created to store the models and the output .wav files.
+
 Look at the unit test parameters below codes/ or the parameters used in run_train.m and run_test.m. 
 
 **Dependencies**
@@ -37,3 +39,6 @@ Look at the unit test parameters below codes/ or the parameters used in run_trai
 [3] He, K., Zhang, X., Ren, S., & Sun, J. (2015). Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. arXiv preprint arXiv:1502.01852.
 
 [4] Le, Q. V., Jaitly, N., & Hinton, G. E. (2015). A Simple Way to Initialize Recurrent Networks of Rectified Linear Units. arXiv preprint arXiv:1504.00941.
+
+** Author of the modification**
+Jordi Pons (idrojsnop@gmail.com)
