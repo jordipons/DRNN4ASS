@@ -1,9 +1,8 @@
-Deep Recurrent Neural Network for Audio Source Separation
-======================
+**Deep Recurrent Neural Network for Audio Source Separation**
 
 A Matlab implementation of DRNN for monaural audio source separation based on the joint optimization of masking functions and discriminative training criteria of Huang et al. [1].
 
-With this framework one can also set several kinds of inicializations for DRNN, such as "Xavier" [], "He" [] and "IRNN" [].
+With this framework one can also set several kinds of inicializations for DRNN, such as "Xavier" [2], "He" [3] and "IRNN" [4].
 
 Getting Started
 ====================
@@ -32,6 +31,9 @@ Dependencies
 References
 ====================
 [1] Po-Sen Huang, Minje Kim, Mark Hasegawa-Johnson, Paris Smaragdis (2015). "Joint Optimization of Masks and Deep Recurrent Neural Networks for Monaural Source Separation" to appear in IEEE/ACM Transactions on Audio, Speech, and Language Processing.
+
 [2] Glorot, X., & Bengio, Y. (2010). Understanding the difficulty of training deep feedforward neural networks. In International conference on artificial intelligence and statistics (pp. 249-256).
+
 [3] He, K., Zhang, X., Ren, S., & Sun, J. (2015). Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. arXiv preprint arXiv:1502.01852.
+
 [4] Le, Q. V., Jaitly, N., & Hinton, G. E. (2015). A Simple Way to Initialize Recurrent Networks of Rectified Linear Units. arXiv preprint arXiv:1504.00941.
