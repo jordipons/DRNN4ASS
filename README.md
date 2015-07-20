@@ -2,31 +2,31 @@
 
 A Matlab implementation of DRNN for monaural audio source separation based on the joint optimization of masking functions and discriminative training criteria of Huang et al. [1].
 
-With this framework one can also set several kinds of inicializations for DRNN, such as "Xavier" [2], "He" [3] and "IRNN" [4].
+With this framework one can also set several kinds of inicializations for DRNN, such as: "Xavier" [2], "He" [3] and "IRNN" [4].
 
 **Getting Started**
 
-1. training: run_train.m (run_train.sh is only used to run the Matlab)
+1. training: run_train.m (run_train.sh is only used to run the scrip into the server)
  
 2. testing: run_test.m
 
-To try the codes on your data, put your data into a folder accordingly and look at the unit test parameters below codes/ or in run_train.m. 
+To try the codes on your data: put your data into a waves/ folder. The waves/ folder should be into the same root folder as DRNN4ASS/.
+
+Look at the unit test parameters below codes/ or the parameters used in run_train.m and run_test.m. 
 
 **Dependencies**
 
 1. The package is modified based on deeplearningsourceseparation (Reference: https://sites.google.com/site/deeplearningsourceseparation/) that at its time is based on rnn-speech-denoising (Reference: https://github.com/amaas/rnn-speech-denoising).
 
-2. The software depends on Mark Schmidt's minFunc package for convex optimization (Reference: http://www.di.ens.fr/~mschmidt/Software/minFunc.html).
+2. Mark Schmidt's minFunc package for convex optimization (Reference: http://www.di.ens.fr/~mschmidt/Software/minFunc.html).
 
-3. Additionally, we have included Mark Hasegawa-Johnson's HTK write and read functions that are used to handle the MFCC files (Reference: http://www.isle.illinois.edu/sst/software/).
+3. Mark Hasegawa-Johnson's HTK write and read functions that are used to handle the features files (Reference: http://www.isle.illinois.edu/sst/software/).
 
-4. We use HTK for computing features (MFCC, logmel) (HCopy) (Reference: http://htk.eng.cam.ac.uk/).
+4. HTK for computing features (Reference: http://htk.eng.cam.ac.uk/).
 
-5. We use signal processing functions from labrosa (Reference: http://labrosa.ee.columbia.edu/).
+5. Signal processing functions from Labrosa (Reference: http://labrosa.ee.columbia.edu/).
 
-6. We use BSS Eval toolbox Version 2.0, 3.0 for evaluation (Reference: http://bass-db.gforge.inria.fr/bss_eval/).
-
-7. We use MIR-1K for singing voice separation task (Reference: https://sites.google.com/site/unvoicedsoundseparation/mir-1k).
+6. BSS Eval toolbox Version 3.0 for evaluation (Reference: http://bass-db.gforge.inria.fr/bss_eval/).
 
 **References**
 
