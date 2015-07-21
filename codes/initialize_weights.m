@@ -16,12 +16,16 @@ for l = 1 : numel(eI.layerSizes)
         prevSize = eI.inputDim;
     end;
     curSize = eI.layerSizes(l);
-    % Xaxier's scaling factor
-    s = sqrt(6) / sqrt(prevSize + curSize);
-    % Ilya suggests smaller scaling for recurrent layer
-    %if l == eI.temporalLayer
-    %    s = sqrt(6) / sqrt(prevSize + 2*curSize);
-    %end;
+    if strcmpi(eI.hiddenInit, 'xavier')    
+        % Xaxier's scaling factor
+        s = sqrt(6) / sqrt(prevSize + curSize);
+        % Ilya suggests smaller scaling for recurrent layer
+        %if l == eI.temporalLayer
+        %    s = sqrt(6) / sqrt(prevSize + 2*curSize);
+        %end;
+    elseif strcmpi(eI.hiddenInit, 'he')
+        s = sqrt(2) / sqrt(prevSize);
+    end
     stack{l}.W = rand(curSize, prevSize)*2*s - s;
     stack{l}.b = zeros(curSize, 1);
 end
@@ -50,13 +54,19 @@ end
 if eI.temporalLayer
     if isfield(eI, 'fullRNN') && eI.fullRNN==1
         for  l = 1 : numel(eI.layerSizes)-1
-            % assuems temporal init type set
+            % assumes temporal init type set
             if strcmpi(eI.temporalInit, 'zero')
                 W_t{l}.W = zeros(eI.layerSizes(l));
-            elseif strcmpi(eI.temporalInit, 'rand')
+            elseif strcmpi(eI.temporalInit, 'xavier')
+                s = sqrt(6) / sqrt(prevSize + curSize);
+                W_t{l}.W = rand(eI.layerSizes(l))*2*s - s;                
+            elseif strcmpi(eI.temporalInit, 'xavierSmall')
                 % Ilya's modification to Xavier's update rule
                 s = sqrt(6) / sqrt(3*eI.layerSizes(l));
                 W_t{l}.W = rand(eI.layerSizes(l))*2*s - s;
+            elseif strcmpi(eI.temporalInit, 'he')
+                s = sqrt(2) / sqrt(eI.layerSizes(l-1));
+                W_t{l}.W = rand(eI.layerSizes(l))*2*s - s;                
             elseif strcmpi(eI.temporalInit, 'eye')
                 W_t{l}.W = eye(eI.layerSizes(l));
             else
@@ -64,15 +74,23 @@ if eI.temporalLayer
             end;
         end
     else
+        if eI.temporalLayer == 1
+            laySize = eI.inputDim;
+        else
+            laySize = eI.layerSizes(eI.temporalLayer);
+        end;
         % assuems temporal init type set
         if strcmpi(eI.temporalInit, 'zero')
-            W_t = zeros(eI.layerSizes(eI.temporalLayer));
-        elseif strcmpi(eI.temporalInit, 'rand')
+            W_t = zeros(laySize);
+        elseif strcmpi(eI.temporalInit, 'He')
+            s = sqrt(2) / sqrt(laySize);
+            W_t = (rand(laySize)*2*s - s)*eI.temporalInitParam;            
+        elseif strcmpi(eI.temporalInit, 'xavierSmall')
             % Ilya's modification to Xavier's update rule
-            s = sqrt(6) / sqrt(3*eI.layerSizes(eI.temporalLayer));
-            W_t = rand(eI.layerSizes(eI.temporalLayer))*2*s - s;
+            s = sqrt(6) / sqrt(3*laySize);
+            W_t = (rand(laySize)*2*s - s)*eI.temporalInitParam;             
         elseif strcmpi(eI.temporalInit, 'eye')
-            W_t = eye(eI.layerSizes(eI.temporalLayer));
+            W_t = eye(laySize)*eI.temporalInitParam;
         else
             error('unrecognized temporal initialization: %s', eI.temporalInit);
         end;

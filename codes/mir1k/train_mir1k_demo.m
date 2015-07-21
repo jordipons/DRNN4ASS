@@ -1,8 +1,8 @@
 function train_mir1k_demo(context_win, hidden_units, num_layers, isdropout, ...
     isRNN, iscleanonly, circular_step , isinputL1, MFCCorlogMelorSpectrum, ...
     framerate, pos_neg_r, outputnonlinear, opt, act, train_mode, const,  ...
-    const2, isGPU, train_files, train_data_path, val_files, val_data_path, cut_silences, runID, norm_data)
-
+    const2, isGPU, train_files, train_data_path, val_files, val_data_path, ...
+    cut_silences, runID, norm_data, hiddenInit, temporalInit, temporalInitParam)
 
 
 % Demo MIR-1K training ---------------------------------------------
@@ -112,8 +112,9 @@ switch act
         eI.activationFn = 'RELU';
 end
 
-% temporal initialization type
-eI.temporalInit = 'rand';
+% initialization type
+eI.temporalInit = temporalInit;
+eI.hiddenInit = hiddenInit;
 % weight norm penaly
 eI.lambda = 0;
 % file containing whitening matrices for outputs
@@ -143,6 +144,7 @@ eI.circular_step = circular_step;
 eI.train_files=train_files;
 eI.cut_silences=cut_silences;
 eI.norm_data=norm_data;
+eI.temporalInitParam=temporalInitParam;
 
 %% setup modelname
 if isRNN,
